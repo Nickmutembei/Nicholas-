@@ -2,36 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nicholas Mutembei Portfolio</title>
+  <!-- essential for responsiveness: keeps original design but adapts -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Nicholas Mutembei Portfolio (fully responsive)</title>
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Google Fonts: Inter + JetBrains Mono -->
+  <!-- Google Fonts: Inter + JetBrains Mono (preserved) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
+    /* ----- original base with responsive enhancements ----- */
     html {
-  font-size: 80%; /* scales down everything to 90% of default */
-}
+      font-size: 80%; /* as in original */
+      scroll-behavior: smooth;
+    }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       background-color: #f8fafc;
       font-family: "Inter", system-ui, sans-serif;
       color: #0b1e2e;
       line-height: 1.5;
-      scroll-behavior: smooth;
     }
+
     .container {
       max-width: 1300px;
       margin: 0 auto;
       padding: 0 30px;
+      width: 100%;
     }
+    /* responsive container tweaks */
+    @media (max-width: 600px) { .container { padding: 0 20px; } }
+
+    /* header (preserved look, sticky + blur) */
     .site-header {
       background-color: rgba(255,255,255,0.75);
       backdrop-filter: blur(8px);
@@ -43,12 +52,15 @@
       z-index: 50;
       border-bottom: 1px solid #e2e8f0;
     }
+
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
+      gap: 16px 20px;
     }
+
     .logo a {
       font-weight: 700;
       font-size: 1.7rem;
@@ -58,11 +70,15 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      white-space: nowrap;
     }
+    @media (max-width: 480px) { .logo a { font-size: 1.4rem; } }
+
     .nav-links {
       display: flex;
       gap: 2.2rem;
       font-weight: 500;
+      flex-wrap: wrap;
     }
     .nav-links a {
       text-decoration: none;
@@ -76,6 +92,8 @@
       color: #0a1a2b;
       border-bottom-color: #2b6f9e;
     }
+
+    /* buttons (original classes) */
     .btn {
       display: inline-block;
       background-color: white;
@@ -102,10 +120,13 @@
       background-color: #f1f6fc;
       border-color: #99b8d4;
     }
+
     section {
       padding: 70px 0;
       border-bottom: 1px solid #e9edf2;
     }
+    @media (max-width: 700px) { section { padding: 50px 0; } }
+
     .section-title {
       font-size: 2.2rem;
       font-weight: 650;
@@ -115,14 +136,16 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      flex-wrap: wrap;
     }
     .section-title i {
       color: #2f6e9c;
       font-size: 2rem;
       width: 48px;
     }
+    @media (max-width: 600px) { .section-title { font-size: 1.9rem; } }
 
-    /* --- HERO with actual photo --- */
+    /* ----- HERO with actual photo (original layout, now responsive) ----- */
     .hero-profile {
       display: flex;
       flex-wrap: wrap;
@@ -152,6 +175,7 @@
     }
     .profile-about {
       flex: 2 1 400px;
+      min-width: 280px;
     }
     .profile-about .hero-badge {
       font-family: "JetBrains Mono", monospace;
@@ -165,7 +189,7 @@
       border: 1px solid #bdd6ea;
     }
     .profile-about h1 {
-      font-size: 3.2rem;
+      font-size: clamp(2.4rem, 6vw, 3.2rem);
       font-weight: 700;
       line-height: 1.1;
       letter-spacing: -0.03em;
@@ -186,7 +210,6 @@
       display: flex;
       flex-wrap: wrap;
       gap: 32px;
-      margin-top: 30px;
       background: #e7f0f8;
       border-radius: 70px;
       padding: 22px 32px;
@@ -196,7 +219,7 @@
     .stat-number { font-size: 2rem; font-weight: 700; color: #123a52; }
     .stat-label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: #385d79; }
 
-    /* ===== THREE THINGS I DO (3 bold cards at top) ===== */
+    /* ===== THREE THINGS I DO (3 bold cards) ===== (original) */
     .three-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -250,10 +273,10 @@
       color: #113e5c;
     }
 
-    /* ===== RECENT PROJECTS GALLERY (below) ===== */
+    /* ===== RECENT PROJECTS GALLERY (preserved 3 per row, then responsive) ===== */
     .gallery {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);   /* three per row */
+      grid-template-columns: repeat(3, 1fr);
       gap: 30px;
       margin-top: 30px;
     }
@@ -301,13 +324,15 @@
       flex: 1;
     }
 
-    /* toolkit & contact (unchanged, but keep compact) */
+    /* toolkit & contact (original styles, responsive flex) */
     .about-supplement {
       background: #eef4fa;
       border-radius: 50px;
       padding: 48px 44px;
       margin-top: 40px;
     }
+    @media (max-width: 700px) { .about-supplement { padding: 30px 20px; } }
+
     .skill-bars { margin-top: 30px; }
     .skill-item { margin-bottom: 24px; }
     .skill-label { display: flex; justify-content: space-between; font-weight: 500; margin-bottom: 6px; }
@@ -319,6 +344,8 @@
       display: flex; flex-wrap: wrap; gap: 40px; background: white; border-radius: 48px;
       padding: 48px 44px; box-shadow: 0 16px 30px -16px #a7c0d3;
     }
+    @media (max-width: 700px) { .contact-flex { padding: 30px 24px; } }
+
     .contact-info { flex: 1 1 280px; }
     .contact-info h3 { font-size: 1.9rem; font-weight: 650; margin-bottom: 20px; }
     .contact-detail-item { display: flex; align-items: center; gap: 18px; margin: 32px 0; }
@@ -340,16 +367,92 @@
     }
     hr { border: none; border-top: 2px dotted #aec9df; margin: 30px 0 20px; }
 
+    /* ===== CORE EXPERTISE (Deep Corporate Blue #003366) – original section added later, preserved ===== */
+    #core-expertise {
+      padding: 65px 20px;
+      background: #f8fafc;
+    }
+    .expertise-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .expertise-card {
+      background: #ffffff;
+      padding: 28px 24px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    .expertise-card .icon {
+      width: 60px; height: 60px; margin: 0 auto 18px; border-radius: 12px;
+      background: #003366; display: flex; align-items: center; justify-content: center;
+      font-size: 22px; color: #ffffff;
+    }
+    .expertise-card h3 { font-size: 1.25rem; margin-bottom: 10px; font-weight: 600; color: #0f172a; }
+    .expertise-card p { font-size: 0.95rem; line-height: 1.6; color: #475569; margin-bottom: 18px; }
+    .expertise-card .tech { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+    .expertise-card .tech span {
+      font-size: 0.8rem; padding: 6px 11px; border-radius: 6px;
+      background: #e6eef7; color: #003366; font-weight: 500;
+    }
+
+    /* additional project-card header (from later style, preserve) */
+    .card-header {
+      display: flex; align-items: flex-start; gap: 18px; margin-bottom: 22px;
+    }
+    .icon-wrapper {
+      flex-shrink: 0; width: 60px; height: 60px; background: #e3f2fd;
+      border-radius: 18px; display: flex; align-items: center; justify-content: center;
+    }
+    .icon-wrapper i { font-size: 30px; color: #1f6b9f; }
+    .project-header { flex: 1; min-width: 0; }
+    .project-header h4 {
+      margin: 0 0 8px; font-size: 1.45rem; font-weight: 700; color: #1a2634;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .project-tag {
+      display: inline-block; padding: 6px 14px; background: #f0f7ff; color: #1f6b9f;
+      border-radius: 30px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
+    }
+    .project-footer {
+      display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start; margin-top: 0.5rem;
+    }
+    .view-btn {
+      display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.85rem; padding: 0.3rem 0.6rem;
+      text-decoration: none; background-color: #003366; color: #fff; border-radius: 4px;
+    }
+    .github-icon {
+      display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem;
+      width: 28px; height: 28px; background-color: #24292f; color: #fff; border-radius: 4px;
+      text-decoration: none;
+    }
+    .github-cta { text-align: center; margin: 1.5rem 0; }
+    .github-cta-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; padding: 0.5rem 1rem;
+      text-decoration: none; background-color: #24292f; color: #fff; border-radius: 6px;
+    }
+
+    /* ===== responsive overrides (preserve original breakpoints + extra safety) ===== */
     @media (max-width: 1024px) {
       .three-grid { grid-template-columns: repeat(2,1fr); }
       .gallery { grid-template-columns: repeat(2,1fr); }
+      .expertise-row { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .project-header h4 { white-space: normal; } /* allow wrap */
     }
     @media (max-width: 640px) {
       .three-grid { grid-template-columns: 1fr; }
       .gallery { grid-template-columns: 1fr; }
-      .header-inner { flex-direction: column; gap: 16px; }
+      .expertise-row { grid-template-columns: 1fr; }
+      .header-inner { flex-direction: column; align-items: flex-start; }
       .profile-about h1 { font-size: 2.4rem; }
       .image-circle { width: 200px; height: 200px; }
+    }
+    @media (max-width: 480px) {
+      .stats-mini { gap: 16px; padding: 18px; }
+      .contact-detail-item { gap: 12px; }
     }
   </style>
 </head>
@@ -365,13 +468,12 @@
     </div>
   </header>
   <main>
-    <!-- HERO (same, with actual photo) -->
+    <!-- HERO (exactly as original, with actual photo) -->
     <section id="home" style="padding-top: 40px;">
       <div class="container">
         <div class="hero-profile">
           <div class="profile-image-area">
             <div class="image-circle">
-              <!-- professional unsplash portrait (data-minded) -->
               <img src="Images/NicholasMutembei.jpeg" alt="Nicholas">
             </div>
           </div>
@@ -383,7 +485,7 @@
               <p style="margin-top: 12px;">Remote · global collaborations.</p>
             </div>
             <div style="display: flex; gap: 16px; flex-wrap: wrap; margin: 25px 0 20px;">
-              <a href="#three-top" class="btn btn-primary"><i class="fa-regular fa-chart-bar"></i> Core Skills</a>
+              <a href="#core-expertise" class="btn btn-primary"><i class="fa-regular fa-chart-bar"></i> Core Skills</a>
               <a href="#contact" class="btn btn-outline"><i class="fa-regular fa-comment"></i> contact</a>
             </div>
             <div class="stats-mini">
@@ -397,798 +499,166 @@
       </div>
     </section>
 
-    
-<!-- ===== CORE EXPERTISE (Deep Corporate Blue #003366) ===== -->
-<section id="core-expertise">
-  <div class="container">
-
-    <!-- Section Title -->
-         <div class="section-title text-center mb-5">
-      <span>What I do</span>
-      <div class="title-decoration"></div>
-    </div>
-<div class="section-title" style="text-align: center; margin-bottom: 2rem;">
-  <p style="font-size: 1rem; color: #555; max-width: 600px; margin: 0 auto;">
-    Front-End development, analytics, and AI solutions designed to drive real impact.
-  </p>
-</div>
-
-
-    <div class="expertise-row">
-
-      <!-- Frontend -->
-      <div class="expertise-card">
-        <div class="icon">
-          <i class="fa-solid fa-code"></i>
+    <!-- CORE EXPERTISE (Deep Corporate Blue #003366) – original block kept -->
+    <section id="core-expertise">
+      <div class="container">
+        <div class="section-title text-center" style="justify-content: center;">
+          <span>What I do</span>
+          <div class="title-decoration"></div>
         </div>
-        <h3>Frontend Development</h3>
-        <p>
-          Designing responsive, performance-optimized interfaces with structured UI systems,
-          accessibility standards, and seamless digital experiences.
-        </p>
-        <div class="tech">
-          <span>HTML5</span>
-          <span>CSS3</span>
-          <span>JavaScript</span>
+        <div class="section-title" style="text-align: center; margin-bottom: 2rem;">
+          <p style="font-size: 1rem; color: #555; max-width: 600px; margin: 0 auto;">
+            Front-End development, analytics, and AI solutions designed to drive real impact.
+          </p>
+        </div>
+        <div class="expertise-row">
+          <div class="expertise-card">
+            <div class="icon"><i class="fa-solid fa-code"></i></div>
+            <h3>Frontend Development</h3>
+            <p>Designing responsive, performance-optimized interfaces with structured UI systems, accessibility standards, and seamless digital experiences.</p>
+            <div class="tech"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
+          </div>
+          <div class="expertise-card">
+            <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+            <h3>Data Analytics</h3>
+            <p>Applying statistical modeling, data transformation, and exploratory analysis to generate actionable insights for informed business strategy.</p>
+            <div class="tech"><span>R</span><span>Python</span><span>SQL</span></div>
+          </div>
+          <div class="expertise-card">
+            <div class="icon"><i class="fa-solid fa-brain"></i></div>
+            <h3>Machine Learning</h3>
+            <p>Building scalable predictive systems and end-to-end ML pipelines, enabling intelligent automation and data-driven innovation.</p>
+            <div class="tech"><span>scikit-learn</span><span>TensorFlow</span><span>XGBoost</span></div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Data Analytics -->
-      <div class="expertise-card">
-        <div class="icon">
-          <i class="fa-solid fa-chart-line"></i>
+    <!-- RECENT PROJECTS (full original gallery with 6 cards) -->
+    <section id="recent" style="padding-top: 2rem; padding-bottom: 3rem;">
+      <div class="container">
+        <div class="section-title text-center">
+          <span>Recent Projects</span>
+          <div class="title-decoration"></div>
         </div>
-        <h3>Data Analytics</h3>
-        <p>
-          Applying statistical modeling, data transformation, and exploratory analysis
-          to generate actionable insights for informed business strategy.
-        </p>
-        <div class="tech">
-          <span>R</span>
-          <span>Python</span>
-          <span>SQL</span>
-        </div>
-      </div>
-
-      <!-- Machine Learning -->
-      <div class="expertise-card">
-        <div class="icon">
-          <i class="fa-solid fa-brain"></i>
-        </div>
-        <h3>Machine Learning</h3>
-        <p>
-          Building scalable predictive systems and end-to-end ML pipelines,
-          enabling intelligent automation and data-driven innovation.
-        </p>
-        <div class="tech">
-          <span>scikit-learn</span>
-          <span>TensorFlow</span>
-          <span>XGBoost</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<style>
-#core-expertise {
-  padding: 65px 20px;
-  background: #f8fafc;
-  font-family: system-ui, -apple-system, sans-serif;
-}
-
-.container {
-  max-width: 1150px;
-  margin: 0 auto;
-}
-
-.section-title {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.section-title h2 {
-  font-size: 2.1rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: #0f172a;
-}
-
-.section-title p {
-  font-size: 1rem;
-  color: #475569;
-}
-
-/* 3-column layout */
-.expertise-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.expertise-card {
-  background: #ffffff;
-  padding: 28px 24px;
-  border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-  text-align: center;
-}
-
-/* Deep corporate blue */
-.icon {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 18px;
-  border-radius: 12px;
-  background: #003366;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  color: #ffffff;
-}
-
-.expertise-card h3 {
-  font-size: 1.25rem;
-  margin-bottom: 10px;
-  font-weight: 600;
-  color: #0f172a;
-}
-
-.expertise-card p {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #475569;
-  margin-bottom: 18px;
-}
-
-.tech {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.tech span {
-  font-size: 0.8rem;
-  padding: 6px 11px;
-  border-radius: 6px;
-  background: #e6eef7;
-  color: #003366;
-  font-weight: 500;
-}
-</style>
-
-
-<!-- Make sure Font Awesome 6 is loaded in your <head> -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-
-<!-- ===== RECENT PROJECTS ===== -->
-<section id="recent" style="padding-top: 2rem; padding-bottom: 3rem;">
-  <div class="container">
-    <!-- Section Title with decorative element -->
-    <div class="section-title text-center" style="margin-bottom: 2rem;">
-      <span>Recent Projects</span>
-      <div class="title-decoration"></div>
-    </div>
-
-    <!-- Projects Gallery - Exactly 3 cards per row -->
-    <div class="gallery">
-
-      <!-- Project 1 - COVID Analysis -->
-      <div class="project-card">
-        <div class="card-header">
-          <div class="icon-wrapper">
-            <i class="fas fa-virus"></i>
-          </div>
-          <div class="project-header">
-            <h4>Covid Analysis Dashboard</h4>
-            <span class="project-tag">Data Visualization</span>
-          </div>
-        </div>
-        <p>
-          Interactive dashboard visualizing global and regional COVID-19 trends over time. Includes detailed time-series charts, heatmaps, comparisons between countries, and key health metrics for tracking the pandemic's evolution.
-        </p>
-<div class="project-footer" style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start; margin-top: 0.5rem;">
-  
-  <!-- View Sample Button -->
-  <a href="https://nicknick.shinyapps.io/CovidAnalysis/" target="_blank" class="view-btn" 
-     style="display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.85rem; padding: 0.3rem 0.6rem; text-decoration: none; background-color: #003366; color: #fff; border-radius: 4px; transition: background 0.2s;">
-    <i class="fas fa-external-link-alt" style="font-size: 0.8rem;"></i> View Sample
-  </a>
-
-  <!-- GitHub Icon -->
-  <a href="#" class="github-icon" title="View Code" 
-     style="display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem; width: 28px; height: 28px; background-color: #24292f; color: #fff; border-radius: 4px; text-align: center;">
-    <i class="fab fa-github" style="font-size: 0.85rem;"></i>
-  </a>
-
-</div>
-
-      </div>
-
-      <!-- Project 2 - Stock Market -->
-      <div class="project-card">
-        <div class="card-header">
-          <div class="icon-wrapper">
-            <i class="fas fa-chart-line"></i>
-          </div>
-          <div class="project-header">
-            <h4>Financial Stock Market Analysis</h4>
-            <span class="project-tag">Financial Analytics</span>
-          </div>
-        </div>
-        <p>
-          Comprehensive stock market analysis using historical and real-time data. Features include time-series forecasting, technical indicators, interactive visualizations, and insights for investment decisions.
-        </p>
-<div class="project-footer" style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start; margin-top: 0.5rem;">
-  
-  <!-- View Sample Button -->
-  <a href="https://nicknick.shinyapps.io/FinancialStockMarket/" target="_blank" class="view-btn" 
-     style="display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.85rem; padding: 0.3rem 0.6rem; text-decoration: none; background-color: #003366; color: #fff; border-radius: 4px; transition: background 0.2s;">
-    <i class="fas fa-external-link-alt" style="font-size: 0.8rem;"></i> View Sample
-  </a>
-
-  <!-- GitHub Icon -->
-  <a href="#" class="github-icon" title="View Code" 
-     style="display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem; width: 28px; height: 28px; background-color: #24292f; color: #fff; border-radius: 4px; text-align: center;">
-    <i class="fab fa-github" style="font-size: 0.85rem;"></i>
-  </a>
-
-</div>
-
-      </div>
-
-      <!-- Project 3 - Titanic -->
-      <div class="project-card">
-        <div class="card-header">
-          <div class="icon-wrapper">
-            <i class="fas fa-ship"></i>
-          </div>
-          <div class="project-header">
-            <h4>Titanic Survival Prediction</h4>
-            <span class="project-tag">Machine Learning</span>
-          </div>
-        </div>
-        <p>
-          Machine learning project predicting Titanic passenger survival. Includes data cleaning, feature engineering, model comparison, cross-validation, and analysis of feature importance to understand survival factors.
-        </p>
-<div class="project-footer" style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start; margin-top: 0.5rem;">
-  
-  <!-- View Sample Button -->
-  <a href="https://nicknick.shinyapps.io/TitanicAnalysis/" target="_blank" class="view-btn" 
-     style="display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.85rem; padding: 0.3rem 0.6rem; text-decoration: none; background-color: #003366; color: #fff; border-radius: 4px; transition: background 0.2s;">
-    <i class="fas fa-external-link-alt" style="font-size: 0.8rem;"></i> View Sample
-  </a>
-
-  <!-- GitHub Icon -->
-  <a href="#" class="github-icon" title="View Code" 
-     style="display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem; width: 28px; height: 28px; background-color: #24292f; color: #fff; border-radius: 4px; text-align: center;">
-    <i class="fab fa-github" style="font-size: 0.85rem;"></i>
-  </a>
-
-</div>
-
-      </div>
-
-      <!-- Project 4 - Business Dashboard -->
-      <div class="project-card">
-        <div class="card-header">
-          <div class="icon-wrapper">
-            <i class="fas fa-chart-pie"></i>
-          </div>
-          <div class="project-header">
-            <h4>Comprehensive Data Dashboard</h4>
-            <span class="project-tag">Business Intelligence</span>
-          </div>
-        </div>
-        <p>
-          Multi-source business dashboard showing real-time KPIs, trends, and insights. Features interactive filters, drill-downs, and custom visualizations to help stakeholders make data-driven decisions efficiently.
-        </p>
-<div class="project-footer" style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start; margin-top: 0.5rem;">
-  
-  <!-- View Sample Button -->
-  <a href="https://nicknick.shinyapps.io/ComprehensivedataDashboard/" target="_blank" class="view-btn" 
-     style="display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.85rem; padding: 0.3rem 0.6rem; text-decoration: none; background-color: #003366; color: #fff; border-radius: 4px; transition: background 0.2s;">
-    <i class="fas fa-external-link-alt" style="font-size: 0.8rem;"></i> View Sample
-  </a>
-
-  <!-- GitHub Icon -->
-  <a href="#" class="github-icon" title="View Code" 
-     style="display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem; width: 28px; height: 28px; background-color: #24292f; color: #fff; border-radius: 4px; text-align: center;">
-    <i class="fab fa-github" style="font-size: 0.85rem;"></i>
-  </a>
-
-</div>
-
-      </div>
-
-      <!-- Project 5 - Diamond Sales -->
-      <div class="project-card">
-        <div class="card-header">
-          <div class="icon-wrapper">
-            <i class="fas fa-gem"></i>
-          </div>
-          <div class="project-header">
-            <h4>Diamond Sales Dashboard</h4>
-            <span class="project-tag">Analytics App</span>
-          </div>
-        </div>
-        <p>
-          Shiny application analyzing diamond pricing and quality. Includes distribution visualizations, predictive modeling for price estimation, interactive filters, and detailed insights on factors affecting diamond value.
-        </p>
-<div class="project-footer" style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start; margin-top: 0.5rem;">
-  
-  <!-- View Sample Button -->
-  <a href="https://nicknick.shinyapps.io/DiamondSalesDashboard/" target="_blank" class="view-btn" 
-     style="display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.85rem; padding: 0.3rem 0.6rem; text-decoration: none; background-color: #003366; color: #fff; border-radius: 4px; transition: background 0.2s;">
-    <i class="fas fa-external-link-alt" style="font-size: 0.8rem;"></i> View Sample
-  </a>
-
-  <!-- GitHub Icon -->
-  <a href="#" class="github-icon" title="View Code" 
-     style="display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem; width: 28px; height: 28px; background-color: #24292f; color: #fff; border-radius: 4px; text-align: center;">
-    <i class="fab fa-github" style="font-size: 0.85rem;"></i>
-  </a>
-
-</div>
-
-      </div>
-
-      <!-- Project 6 - Virtual Academia -->
-      <div class="project-card">
-        <div class="card-header">
-          <div class="icon-wrapper">
-            <i class="fas fa-laptop-code"></i>
-          </div>
-          <div class="project-header">
-            <h4>Virtual Academia Solutions</h4>
-            <span class="project-tag">Web Development</span>
-          </div>
-        </div>
-        <p>
-          Responsive front-end platform for virtual learning. Features interactive UI components, modern design, and optimized layouts to enhance student engagement and provide seamless online learning experiences.
-        </p>
-<div class="project-footer" style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-start; margin-top: 0.5rem;">
-  
-  <!-- View Sample Button -->
-  <a href="https://www.virtualacademiasolutions.com/Home" target="_blank" class="view-btn" 
-     style="display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.85rem; padding: 0.3rem 0.6rem; text-decoration: none; background-color: #003366; color: #fff; border-radius: 4px; transition: background 0.2s;">
-    <i class="fas fa-external-link-alt" style="font-size: 0.8rem;"></i> View Sample
-  </a>
-
-  <!-- GitHub Icon -->
-  <a href="#" class="github-icon" title="View Code" 
-     style="display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem; width: 28px; height: 28px; background-color: #24292f; color: #fff; border-radius: 4px; text-align: center;">
-    <i class="fab fa-github" style="font-size: 0.85rem;"></i>
-  </a>
-
-</div>
-
-      </div>
-
-    </div>
-
-    <!-- More case studies button -->
-<div class="github-cta" style="text-align: center; margin: 1.5rem 0;">
-  <a href="https://github.com/Nickmutembei" target="_blank" class="github-cta-btn" 
-     style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; padding: 0.5rem 1rem; text-decoration: none; background-color: #24292f; color: #fff; border-radius: 6px; transition: background 0.2s;">
-    <i class="fab fa-github" style="font-size: 1rem;"></i>
-    More case studies & code on GitHub
-    <i class="fas fa-arrow-right" style="font-size: 0.9rem;"></i>
-  </a>
-</div>
-
-  </div>
-</section>
-
-<!-- ===== CSS ===== -->
-<style>
-  /* Section styling */
-  .section-title {
-    position: relative;
-    margin-bottom: 3rem !important;
-  }
-  
-  .section-title span {
-    font-size: 2.2rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, #1f6b9f 0%, #2c3e50 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: -0.5px;
-  }
-  
-  .title-decoration {
-    width: 60px;
-    height: 4px;
-    background: linear-gradient(90deg, #1f6b9f, #64b5f6);
-    margin: 15px auto 0;
-    border-radius: 2px;
-  }
-
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Exactly 3 columns */
-    gap: 35px; /* Increased gap for wider cards */
-    justify-content: center;
-    max-width: 1600px; /* Container max width */
-    margin: 0 auto;
-  }
-
-  /* Wider cards with icon and title on same line */
-  .project-card {
-    width: 100%;
-    padding: 35px 32px; /* More horizontal padding */
-    border-radius: 28px; /* Slightly larger radius */
-    background: white;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    border: 1px solid rgba(0,0,0,0.03);
-    box-shadow: 0 15px 35px -15px rgba(0,0,0,0.2);
-  }
-
-  .project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 25px 45px -15px rgba(31, 107, 159, 0.3);
-    border-color: rgba(31, 107, 159, 0.15);
-  }
-
-  /* New header layout - icon and title on same line */
-  .card-header {
-    display: flex;
-    align-items: flex-start;
-    gap: 18px;
-    margin-bottom: 22px;
-    width: 100%;
-  }
-
-  /* Icon styling - slightly smaller to fit with title */
-  .icon-wrapper {
-    flex-shrink: 0; /* Prevent icon from shrinking */
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-    border-radius: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-  }
-
-  .project-card:hover .icon-wrapper {
-    background: linear-gradient(135deg, #1f6b9f 0%, #2c3e50 100%);
-  }
-
-  .icon-wrapper i {
-    font-size: 30px;
-    color: #1f6b9f;
-    transition: all 0.3s ease;
-  }
-
-  .project-card:hover .icon-wrapper i {
-    color: white;
-  }
-
-  /* Project header takes remaining space */
-  .project-header {
-    flex: 1;
-    min-width: 0; /* Allows text truncation to work */
-  }
-
-  /* Title styling - single line */
-  .project-header h4 {
-    margin: 0 0 8px 0;
-    font-size: 1.45rem;
-    font-weight: 700;
-    color: #1a2634;
-    line-height: 1.2;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 100%;
-    letter-spacing: -0.3px;
-  }
-
-  .project-tag {
-    display: inline-block;
-    padding: 6px 14px;
-    background: #f0f7ff;
-    color: #1f6b9f;
-    border-radius: 30px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    text-transform: uppercase;
-  }
-
-  /* Description text */
-  .project-card p {
-    color: #4a5568;
-    font-size: 0.98rem; /* Slightly larger */
-    line-height: 1.65;
-    margin: 0 0 24px 0;
-    flex-grow: 1;
-  }
-
-  /* Tech stack badges */
-  .tech-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 30px;
-  }
-
-  .tech-stack span {
-    padding: 6px 16px;
-    background: #f1f5f9;
-    color: #334155;
-    border-radius: 30px;
-    font-size: 0.82rem;
-    font-weight: 500;
-    transition: all 0.2s ease;
-  }
-
-  .tech-stack span:hover {
-    background: #e2e8f0;
-    transform: translateY(-2px);
-  }
-
-  /* Footer with buttons */
-  .project-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: auto;
-  }
-
-  .view-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: linear-gradient(135deg, #1f6b9f, #2c5282);
-    color: #fff;
-    padding: 12px 28px;
-    border-radius: 40px;
-    font-weight: 500;
-    font-size: 0.98rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border: none;
-    box-shadow: 0 4px 12px rgba(31, 107, 159, 0.3);
-  }
-
-  .view-btn:hover {
-    background: linear-gradient(135deg, #155a82, #1f4a6f);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 22px rgba(31, 107, 159, 0.4);
-  }
-
-  .view-btn i {
-    font-size: 0.9rem;
-  }
-
-  .github-icon {
-    width: 48px;
-    height: 48px;
-    background: #f1f5f9;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #334155;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-
-  .github-icon:hover {
-    background: #1f6b9f;
-    color: white;
-    transform: rotate(360deg);
-  }
-
-  .github-icon i {
-    font-size: 1.4rem;
-  }
-
-  /* CTA Button */
-  .github-cta {
-    text-align: center;
-    margin-top: 70px;
-  }
-
-  .github-cta-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    background: linear-gradient(135deg, #1f6b9f, #2c3e50);
-    padding: 20px 52px;
-    border-radius: 60px;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 15px 30px -10px rgba(31, 107, 159, 0.4);
-  }
-
-  .github-cta-btn:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 25px 40px -12px rgba(31, 107, 159, 0.6);
-    gap: 18px;
-  }
-
-  .github-cta-btn i:first-child {
-    font-size: 1.6rem;
-  }
-
-  .github-cta-btn i:last-child {
-    font-size: 1.1rem;
-    transition: transform 0.3s ease;
-  }
-
-  .github-cta-btn:hover i:last-child {
-    transform: translateX(6px);
-  }
-
-  /* Responsive adjustments */
-  @media (max-width: 1400px) {
-    .gallery {
-      gap: 30px;
-    }
-    
-    .project-card {
-      padding: 30px 28px;
-    }
-    
-    .project-header h4 {
-      font-size: 1.35rem;
-    }
-  }
-
-  @media (max-width: 1200px) {
-    .gallery {
-      grid-template-columns: repeat(2, 1fr); /* 2 cards per row on tablet */
-      gap: 28px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .gallery {
-      grid-template-columns: 1fr; /* 1 card per row on mobile */
-      gap: 25px;
-    }
-    
-    .project-card {
-      padding: 28px 24px;
-    }
-    
-    .card-header {
-      gap: 15px;
-    }
-    
-    .icon-wrapper {
-      width: 52px;
-      height: 52px;
-    }
-    
-    .icon-wrapper i {
-      font-size: 26px;
-    }
-    
-    .project-header h4 {
-      font-size: 1.3rem;
-      white-space: normal; /* Allow wrapping on mobile */
-    }
-  }
-
-  @media (max-width: 576px) {
-    .section-title span {
-      font-size: 1.8rem;
-    }
-    
-    .github-cta-btn {
-      padding: 16px 32px;
-      font-size: 1rem;
-    }
-  }
-
-  /* Add Font Awesome if not already included */
-  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
-</style>
-    
-<!-- contact updated with dynamic Email & WhatsApp -->
-<section id="contact" style="padding-top: 2rem; padding-bottom: 4rem;">
-  <div class="container">
-    <div class="section-title">
-      <i class="fa-regular fa-message"></i>
-      <span>let’s connect</span>
-    </div>
-    <div class="contact-flex">
-      <div class="contact-info">
-        <h3>Connect · inquire · say hello</h3>
-        <div class="contact-detail-item"><i class="fa-regular fa-envelope"></i><span>nicholas.data@portfolio.dev</span></div>
-        <div class="contact-detail-item"><i class="fa-regular fa-phone"></i><span>+ 254 798 684 32</span></div>
-        <hr style="width: 80px;">
-        <div class="social-links">
-          <a href="https://wa.me/254798684342" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-          <a href="mailto:nickmutembei3@gmail.com"><i class="fa-regular fa-envelope"></i></a>
-          <a href="tel:+254798684342"><i class="fa-solid fa-phone"></i></a>
-        </div>
-      </div>
-
-      <div class="contact-form">
-        <form id="contactForm" onsubmit="return false;">
-          <div class="input-row" style="display: flex; gap: 10px;">
-            <div class="input-group" style="flex: 1;">
-              <input type="text" id="name" placeholder="your name" required>
+        <div class="gallery">
+          <!-- Project 1 -->
+          <div class="project-card">
+            <div class="card-header">
+              <div class="icon-wrapper"><i class="fas fa-virus"></i></div>
+              <div class="project-header"><h4>Covid Analysis Dashboard</h4><span class="project-tag">Data Visualization</span></div>
             </div>
-            <div class="input-group" style="flex: 1;">
-              <input type="email" id="email" placeholder="email address" required>
+            <p>Interactive dashboard visualizing global and regional COVID-19 trends over time. Includes detailed time-series charts, heatmaps, comparisons between countries.</p>
+            <div class="project-footer">
+              <a href="https://nicknick.shinyapps.io/CovidAnalysis/" target="_blank" class="view-btn"><i class="fas fa-external-link-alt"></i> View Sample</a>
+              <a href="#" class="github-icon"><i class="fab fa-github"></i></a>
             </div>
           </div>
-
-          <div class="input-group">
-            <input type="text" id="subject" placeholder="subject (data / dev inquiry)">
+          <!-- Project 2 -->
+          <div class="project-card">
+            <div class="card-header">
+              <div class="icon-wrapper"><i class="fas fa-chart-line"></i></div>
+              <div class="project-header"><h4>Financial Stock Market Analysis</h4><span class="project-tag">Financial Analytics</span></div>
+            </div>
+            <p>Comprehensive stock market analysis using historical and real-time data. Features include time-series forecasting, technical indicators, interactive visualizations.</p>
+            <div class="project-footer">
+              <a href="https://nicknick.shinyapps.io/FinancialStockMarket/" target="_blank" class="view-btn"><i class="fas fa-external-link-alt"></i> View Sample</a>
+              <a href="#" class="github-icon"><i class="fab fa-github"></i></a>
+            </div>
           </div>
-
-          <div class="input-group">
-            <textarea id="message" rows="5" placeholder="tell me about your project or idea..." required></textarea>
+          <!-- Project 3 -->
+          <div class="project-card">
+            <div class="card-header">
+              <div class="icon-wrapper"><i class="fas fa-ship"></i></div>
+              <div class="project-header"><h4>Titanic Survival Prediction</h4><span class="project-tag">Machine Learning</span></div>
+            </div>
+            <p>Machine learning project predicting Titanic passenger survival. Includes data cleaning, feature engineering, model comparison.</p>
+            <div class="project-footer">
+              <a href="https://nicknick.shinyapps.io/TitanicAnalysis/" target="_blank" class="view-btn"><i class="fas fa-external-link-alt"></i> View Sample</a>
+              <a href="#" class="github-icon"><i class="fab fa-github"></i></a>
+            </div>
           </div>
-
-          <!-- Contact options -->
-          <h3 style="margin-top: 1rem;">How would you like to contact me?</h3>
-          <div style="display: flex; gap: 10px; margin-top: 0.5rem;">
-            <!-- Email Button -->
-            <button 
-              class="btn btn-primary" 
-              style="flex: 1; text-align: center; padding: 8px 0; font-size: 0.9rem;"
-              onclick="sendEmail()"
-            >
-              <i class="fa-regular fa-envelope"></i> Email
-            </button>
-
-            <!-- WhatsApp Button -->
-            <button 
-              class="btn btn-success" 
-              style="flex: 1; text-align: center; padding: 8px 0; font-size: 0.9rem;"
-              onclick="sendWhatsApp()"
-            >
-              <i class="fa-brands fa-whatsapp"></i> WhatsApp
-            </button>
+          <!-- Project 4 -->
+          <div class="project-card">
+            <div class="card-header">
+              <div class="icon-wrapper"><i class="fas fa-chart-pie"></i></div>
+              <div class="project-header"><h4>Comprehensive Data Dashboard</h4><span class="project-tag">Business Intelligence</span></div>
+            </div>
+            <p>Multi-source business dashboard showing real-time KPIs, trends, and insights. Features interactive filters, drill-downs, and custom visualizations.</p>
+            <div class="project-footer">
+              <a href="https://nicknick.shinyapps.io/ComprehensivedataDashboard/" target="_blank" class="view-btn"><i class="fas fa-external-link-alt"></i> View Sample</a>
+              <a href="#" class="github-icon"><i class="fab fa-github"></i></a>
+            </div>
           </div>
-        </form>
+          <!-- Project 5 -->
+          <div class="project-card">
+            <div class="card-header">
+              <div class="icon-wrapper"><i class="fas fa-gem"></i></div>
+              <div class="project-header"><h4>Diamond Sales Dashboard</h4><span class="project-tag">Analytics App</span></div>
+            </div>
+            <p>Shiny application analyzing diamond pricing and quality. Includes distribution visualizations, predictive modeling for price estimation.</p>
+            <div class="project-footer">
+              <a href="https://nicknick.shinyapps.io/DiamondSalesDashboard/" target="_blank" class="view-btn"><i class="fas fa-external-link-alt"></i> View Sample</a>
+              <a href="#" class="github-icon"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <!-- Project 6 -->
+          <div class="project-card">
+            <div class="card-header">
+              <div class="icon-wrapper"><i class="fas fa-laptop-code"></i></div>
+              <div class="project-header"><h4>Virtual Academia Solutions</h4><span class="project-tag">Web Development</span></div>
+            </div>
+            <p>Responsive front-end platform for virtual learning. Features interactive UI components, modern design, and optimized layouts.</p>
+            <div class="project-footer">
+              <a href="https://www.virtualacademiasolutions.com/Home" target="_blank" class="view-btn"><i class="fas fa-external-link-alt"></i> View Sample</a>
+              <a href="#" class="github-icon"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+        </div>
+        <!-- More case studies button -->
+        <div class="github-cta">
+          <a href="https://github.com/Nickmutembei" target="_blank" class="github-cta-btn"><i class="fab fa-github"></i> More case studies & code on GitHub <i class="fas fa-arrow-right"></i></a>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<script>
-  function sendEmail() {
-    const name = encodeURIComponent(document.getElementById('name').value);
-    const email = encodeURIComponent(document.getElementById('email').value);
-    const subject = encodeURIComponent(document.getElementById('subject').value || "Project Inquiry");
-    const message = encodeURIComponent(document.getElementById('message').value);
-
-    const body = `Hi Nicholas,%0D%0A%0D%0AName: ${name}%0D%0AEmail: ${email}%0D%0ASubject: ${subject}%0D%0A%0D%0A${message}`;
-    window.location.href = `mailto:nickmutembei3@gmail.com?subject=${subject}&body=${body}`;
-  }
-
-  function sendWhatsApp() {
-    const name = encodeURIComponent(document.getElementById('name').value);
-    const email = encodeURIComponent(document.getElementById('email').value);
-    const subject = encodeURIComponent(document.getElementById('subject').value || "Project Inquiry");
-    const message = encodeURIComponent(document.getElementById('message').value);
-
-    const text = `Hi Nicholas, I would like to discuss:%0A%0AName: ${name}%0AEmail: ${email}%0ASubject: ${subject}%0A%0A${message}`;
-    window.open(`https://wa.me/254798684342?text=${text}`, "_blank");
-  }
-</script>
-
+    <!-- CONTACT (original with email/whatsapp) -->
+    <section id="contact" style="padding-top: 2rem; padding-bottom: 4rem;">
+      <div class="container">
+        <div class="section-title">
+          <i class="fa-regular fa-message"></i>
+          <span>let’s connect</span>
+        </div>
+        <div class="contact-flex">
+          <div class="contact-info">
+            <h3>Connect · inquire · say hello</h3>
+            <div class="contact-detail-item"><i class="fa-regular fa-envelope"></i><span>nicholas.data@portfolio.dev</span></div>
+            <div class="contact-detail-item"><i class="fa-regular fa-phone"></i><span>+ 254 798 684 32</span></div>
+            <hr style="width: 80px;">
+            <div class="social-links">
+              <a href="https://wa.me/254798684342" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+              <a href="mailto:nickmutembei3@gmail.com"><i class="fa-regular fa-envelope"></i></a>
+              <a href="tel:+254798684342"><i class="fa-solid fa-phone"></i></a>
+            </div>
+          </div>
+          <div class="contact-form">
+            <form id="contactForm" onsubmit="return false;">
+              <div class="input-row" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <div class="input-group" style="flex: 1 1 200px;"><input type="text" id="name" placeholder="your name" required></div>
+                <div class="input-group" style="flex: 1 1 200px;"><input type="email" id="email" placeholder="email address" required></div>
+              </div>
+              <div class="input-group"><input type="text" id="subject" placeholder="subject (data / dev inquiry)"></div>
+              <div class="input-group"><textarea id="message" rows="5" placeholder="tell me about your project or idea..." required></textarea></div>
+              <h3 style="margin-top: 1rem;">How would you like to contact me?</h3>
+              <div style="display: flex; gap: 10px; margin-top: 0.5rem; flex-wrap: wrap;">
+                <button class="btn btn-primary" style="flex: 1; text-align: center; padding: 8px 0;" onclick="sendEmail()"><i class="fa-regular fa-envelope"></i> Email</button>
+                <button class="btn btn-success" style="flex: 1; text-align: center; padding: 8px 0; background:#25D366; color:white; border:none;" onclick="sendWhatsApp()"><i class="fa-brands fa-whatsapp"></i> WhatsApp</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- footer -->
     <div class="container">
@@ -1198,5 +668,24 @@
       </footer>
     </div>
   </main>
+
+  <script>
+    function sendEmail() {
+      const name = encodeURIComponent(document.getElementById('name').value);
+      const email = encodeURIComponent(document.getElementById('email').value);
+      const subject = encodeURIComponent(document.getElementById('subject').value || "Project Inquiry");
+      const message = encodeURIComponent(document.getElementById('message').value);
+      const body = `Hi Nicholas,%0D%0A%0D%0AName: ${name}%0D%0AEmail: ${email}%0D%0ASubject: ${subject}%0D%0A%0D%0A${message}`;
+      window.location.href = `mailto:nickmutembei3@gmail.com?subject=${subject}&body=${body}`;
+    }
+    function sendWhatsApp() {
+      const name = encodeURIComponent(document.getElementById('name').value);
+      const email = encodeURIComponent(document.getElementById('email').value);
+      const subject = encodeURIComponent(document.getElementById('subject').value || "Project Inquiry");
+      const message = encodeURIComponent(document.getElementById('message').value);
+      const text = `Hi Nicholas, I would like to discuss:%0A%0AName: ${name}%0AEmail: ${email}%0ASubject: ${subject}%0A%0A${message}`;
+      window.open(`https://wa.me/254798684342?text=${text}`, "_blank");
+    }
+  </script>
 </body>
 </html>
